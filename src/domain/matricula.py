@@ -1,9 +1,12 @@
+from .curso import Curso
+from .nota import Nota
+
 class Matricula:
     def __init__(self, codigo: str, curso: 'Curso'):
         self.codigo = codigo
         self.curso = curso
         self.notas = []
-        self.cr = 0.0
+        self.cr = 0.0  
 
     def adicionar_nota(self, nota: Nota):
         self.notas.append(nota)
@@ -17,5 +20,5 @@ class Matricula:
         if total_carga > 0:
             self.cr = total_ponderado / total_carga
         else:
-            self.cr = 0.0
+            self.cr = 0.0  # Se a carga for 0, o CR será 0
         return self.cr
