@@ -1,8 +1,11 @@
+from .matricula import Matricula
+
+
 class Aluno:
     def __init__(self, matricula: int):
         self._matricula = matricula
-        self._matriculas = [] # Lista de objetos Matricula
-        self._cr = 0.0 # CR inicializado
+        self._matriculas = [] 
+        self._cr = 0.0 
 
     @property
     def matricula(self) -> int:
