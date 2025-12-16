@@ -1,16 +1,23 @@
+from ..domain.curso import Curso
 from ..domain.strategies.curso_cr_por_aluno import CursoCRPorAluno
 from ..domain.strategies.curso_cr_por_disciplina import CursoCRPorDisciplina
 
 
-class RelatorioService:
 
+class RelatorioService:
+    """
+    Serviço dedicado à geração de relatórios. 
+    Atua como o Cliente do padrão Strategy.
+    """
     def __init__(self, cursos, matriculas):
+ 
         self.cursos = cursos
         self.matriculas = matriculas
 
-   
-    def _executar_estrategia(self, codigo_curso, strategy, ano=None, semestre=None):
-
+    def _executar_estrategia(self, codigo_curso, strategy, ano=None, semestre=None): 
+        """
+        Método auxiliar para configurar e executar a estratégia em um Curso específico.
+        """
         if codigo_curso not in self.cursos:
             return 0.0
         
@@ -18,23 +25,18 @@ class RelatorioService:
         
         curso.strategy = strategy
         
-  
-        return curso.media_cr(ano, semestre) 
+        
+        return curso.media_cr(ano=ano, semestre=semestre)
 
-  
-    def media_cr_por_aluno(self, codigo_curso):
+   
+    def media_cr_por_aluno(self, codigo_curso, ano=None, semestre=None): #
+        """Calcula a média de CR agrupada por aluno para o curso."""
         strategy = CursoCRPorAluno() 
+        return self._executar_estrategia(codigo_curso, strategy, ano, semestre) 
 
-        return self._executar_estrategia(codigo_curso, strategy)
-
-    def media_cr_por_disciplina(self, codigo_curso):
+    def media_cr_por_disciplina(self, codigo_curso, ano=None, semestre=None): 
+        """Calcula a média de CR agrupada por disciplina para o curso."""
+ 
         strategy = CursoCRPorDisciplina(self.matriculas) 
-
-        return self._executar_estrategia(codigo_curso, strategy)
-    
-
-    def media_cr_por_disciplina_filtrado(self, codigo_curso, ano=None, semestre=None):
-        """Calcula a média de CR agrupada por disciplina, filtrada por ano e/ou semestre."""
-        strategy = CursoCRPorDisciplina(self.matriculas) 
-
+        
         return self._executar_estrategia(codigo_curso, strategy, ano, semestre)

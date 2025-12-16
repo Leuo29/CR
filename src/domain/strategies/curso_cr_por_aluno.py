@@ -1,7 +1,7 @@
 from .curso_cr_strategy import CursoCRStrategy
 
 class CursoCRPorAluno(CursoCRStrategy):
-    def calcular_media(self, curso):
+    def calcular_media(self, curso, ano=None, semestre=None):
         total_cr = 0
         qtd = 0
         for matricula in curso.matriculas:
