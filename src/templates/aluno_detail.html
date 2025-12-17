@@ -1,0 +1,32 @@
+<h6 class="mb-3 text-muted">
+    Notas registradas para o aluno <strong>{{ aluno_id }}</strong>
+</h6>
+
+<table class="table table-sm table-striped table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Disciplina</th>
+            <th>Código Curso</th>
+            <th class="text-center">Nota</th>
+            <th class="text-center">Carga Horária</th>
+            <th class="text-center">Ano/Semestre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detalhe in detalhes %}
+        <tr>
+            <td>{{ detalhe.DISCIPLINA }}</td>
+            <td>{{ detalhe.COD_CURSO }}</td>
+            <td class="text-center">{{ detalhe.NOTA }}</td>
+            <td class="text-center">{{ detalhe.CARGA_HORARIA }}</td>
+            <td class="text-center">{{ detalhe.ANO }}.{{ detalhe.SEMESTRE }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center text-muted">
+                Nenhuma nota encontrada para este aluno.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
