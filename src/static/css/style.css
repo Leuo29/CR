@@ -1,0 +1,19 @@
+.clickable-id {
+    cursor: pointer;
+    color: #0d6efd; 
+    text-decoration: underline;
+}
+
+.clickable-id:hover {
+    opacity: 0.75;
+}
+
+
+canvas {
+    max-height: 400px;
+}
+
+
+.card-title {
+    font-weight: 500;
+}
