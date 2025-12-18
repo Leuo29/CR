@@ -1,4 +1,4 @@
-# Desafio 3 – Cálculo de CR (Coeficiente de Rendimento)
+# Desafio 3 – Cálculo de CR
 
 Este projeto foi desenvolvido como solução para o Desafio 3 do processo seletivo de estágio do STI/UFF. O objetivo é calcular o Coeficiente de Rendimento (CR) dos alunos a partir de um arquivo CSV e apresentar as médias de CR por curso.
 
@@ -147,3 +147,4 @@ Foi utilizado o framework **Pytest** para implementar testes, os seguintes teste
 ---
 
 Desenvolvido por Leonardo Sobrinho (Leuo29)
+
