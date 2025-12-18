@@ -144,7 +144,7 @@ Foi utilizado o framework **Pytest** para implementar testes, os seguintes teste
 - Gerenciador de Entidades: verificação da criação correta de objetos a partir do CSV
 - Strategies: validação de cada cálculo de media de cr de curso
   
-pra rodar os testes basta rodar o seguinte codigo na pasta de origem:
+Pra rodar os testes basta rodar o seguinte codigo na pasta de origem:
 
 ```bash
 pytest
@@ -153,5 +153,6 @@ pytest
 ---
 
 Desenvolvido por Leonardo Sobrinho (Leuo29)
+
 
 
