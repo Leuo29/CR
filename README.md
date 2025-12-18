@@ -4,15 +4,15 @@ Este projeto foi desenvolvido como solução para o Desafio 3 do processo seleti
 
 ## Como baixar e rodar o projeto
 
-Siga os passos abaixo. Você não precisa ter nada instalado previamente além do Python e se quiser o Git segue tutorialzinho de como instalar:
+Siga os passos abaixo. Você não precisa ter nada instalado além do Python. Se quiser instalar o Git segue um tutorialzinho de como instalar:
 
 ```
 https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
 ```
 
-Obs.: Alternativamente basta baixar o zip do projeto e seguir pro passo 2
+Obs.: Alternativamente a instalar o git basta baixar o zip do projeto e seguir pro **passo 2**
 
-### 1. Clonar o projeto
+### Passo 1. Clonar o projeto
 
 Abra o seu terminal (CMD/PowerShell no Windows ou Terminal no Linux/WSL) e digite:
 
@@ -21,7 +21,7 @@ git clone https://github.com/Leuo29/CR.git
 cd CR
 ```
 
-### 2. Criar e ativar o ambiente virtual
+### Passo 2. Criar e ativar o ambiente virtual
 
 #### Windows
 
@@ -37,13 +37,13 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Instalar as dependências
+### Passo 3. Instalar as dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Executar os testes automatizados
+### Passo 4. Executar os testes automatizados
 
 Antes de rodar a interface, é importante validar se os cálculos estão corretos:
 
@@ -51,7 +51,7 @@ Antes de rodar a interface, é importante validar se os cálculos estão correto
 python -m pytest src/cr_logic/tests
 ```
 
-### 5. Rodar a interface web (Django)
+### Passo 5. Rodar a interface web (Django)
 
 ```bash
 # Entre na pasta do projeto Django
@@ -77,7 +77,7 @@ Pronto! Está funcionando =)
 ## Sobre o Projeto
 
 O sistema recebe um arquivo CSV contendo notas de alunos e gera o calculo dos CRs destes alunos e a media de CRs por curso. O foco do desenvolvimento foi em Orientação a Objetos, tentando manter ao maximo padroes de projeto Grasp e Gof (Aprendidos em proj. de software I)
-Foi escolhido o python dada a sua simplicidade, e pelo costume de uso, assim como o framework Web Django, que tem facil instalaçao e utilizaçao
+Foi escolhido o python dada a sua simplicidade, e pelo meu costume de uso, assim como o framework Web Django, que tem facil instalaçao e utilizaçao
 
 ### Entrada de Dados
 
@@ -131,20 +131,27 @@ Assim não tendo a estrategia tipica eu criei três estrategias de calculo desse
 
 Assim, usando o padrão strategy do padraão de modelagem Gof foram criadas as seguintes classes:
 
-- **CursoCRStrategy**: classe abstrata que define o cálculo a media dos cursos.
-- **CursoCRPorAluno**: calcula o CR do curso como a média simples dos CRs globais dos alunos associados.
+- **CursoCRStrategy**: classe abstrata que define o cálculo a media dos cursos
+- **CursoCRPorAluno**: calcula o CR do curso como a média simples dos CRs globais dos alunos associados
 - **CursoCRPorDisciplina**: calcula o CR do curso considerando todas as disciplinas pertencentes ao curso, com média ponderada por carga horária
-- **CursoCRAlunoDisciplina**: calcula o CR do curso considerando o CR global dos alunos que cursaram ao menos uma disciplina do curso.
+- **CursoCRAlunoDisciplina**: calcula o CR do curso considerando o CR global dos alunos que cursaram ao menos uma disciplina do curso
 
 ### Testes
 
 Foi utilizado o framework **Pytest** para implementar testes, os seguintes testes foram feitos:
 
-- Cálculo de CR: validação da conta e divisão por zero.
-- Gerenciador de Entidades: verificação da criação correta de objetos a partir do CSV.
-- Strategies: validação de cada cálculo de media de cr de curso.
+- Cálculo de CR: validação da conta e divisão por zero
+- Gerenciador de Entidades: verificação da criação correta de objetos a partir do CSV
+- Strategies: validação de cada cálculo de media de cr de curso
+  
+pra rodar os testes basta rodar o seguinte codigo na pasta de origem:
+
+```bash
+pytest
+```
 
 ---
 
 Desenvolvido por Leonardo Sobrinho (Leuo29)
+
 
