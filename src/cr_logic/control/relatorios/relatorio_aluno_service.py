@@ -1,6 +1,6 @@
 class RelatorioAlunoService:
     """
-    Serviço focado na geração de relatórios individuais de Aluno/Matricula.
+    gera de relatórios individuais de Aluno/Matricula.
     """
     def __init__(self, matriculas):
         self.matriculas = matriculas
@@ -8,7 +8,7 @@ class RelatorioAlunoService:
 
     def get_cr_individual(self):
         """
-        Retorna um dicionário com o CR individual de cada matrícula: {matricula_id: CR_valor} e printa os valores
+        retorna um dicionário com o CR de cada matrícula e printa os valores
         """
         print("\n------- O CR dos alunos é: --------")
         cr_alunos = {}

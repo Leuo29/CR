@@ -12,7 +12,7 @@ class GerenciadorEntidades:
 
     def processar_linhas(self, dados):
         """
-        Processa uma lista de linhas de dados e cria os objetos de domínio.
+        processa uma lista de linhas de dados e cria os objetos de domínio.
         """
         for linha in dados:
             self._processar_linha(linha)
@@ -23,10 +23,10 @@ class GerenciadorEntidades:
 
     def _processar_linha(self, linha):
         """
-        Processa uma linha de dados para criar ou atualizar as entidades.
+        processa uma linha de dados para criar ou atualizar as entidades.
         """
         
-        # 1. Extração de dados
+        # 1 extração de dados
         ano_semestre_str = str(linha.get('ANO_SEMESTRE', '00000'))
         ano = int(ano_semestre_str[:4])
         semestre = int(ano_semestre_str[4])
@@ -37,27 +37,27 @@ class GerenciadorEntidades:
         nota_valor = float(linha['NOTA'])
 
 
-        # 2. Gerenciar Curso
+        # 2 gerenciar Curso
         if codigo_curso not in self.cursos:
             self.cursos[codigo_curso] = Curso(codigo_curso)
             self.cursos[codigo_curso].strategy = None
         curso = self.cursos[codigo_curso]
 
-        # 3. Gerenciar Disciplina Base 
+        # 3 gerenciar Disciplina Base 
         if codigo_disciplina not in self.disciplinas_base:
             self.disciplinas_base[codigo_disciplina] = Disciplina(
                 codigo_disciplina, codigo_disciplina, carga_horaria, ano, semestre, None
             )
         disciplina_base = self.disciplinas_base[codigo_disciplina]
 
-        # 4. Gerenciar Matrícula do Aluno
+        # 4 gerenciar Matrícula do Aluno
         if matricula_aluno_id not in self.alunos_matriculas:
             student_matricula = Matricula(matricula_aluno_id, curso)
             self.alunos_matriculas[matricula_aluno_id] = student_matricula
             curso.adicionar_matricula(student_matricula)
         student_matricula = self.alunos_matriculas[matricula_aluno_id]
 
-        # 5. Criar Disciplina para a Nota
+        # 5 criar Disciplina para a Nota
         disciplina_para_nota = Disciplina(
             disciplina_base.codigo,
             disciplina_base.nome,
@@ -67,7 +67,7 @@ class GerenciadorEntidades:
             curso
         )
 
-        # 6. Criar e Adicionar Nota
+        # 6 criar e Adicionar Nota
         nota = Nota(disciplina_para_nota, nota_valor)
         student_matricula.adicionar_nota(nota)
 

@@ -4,16 +4,10 @@ class CursoCRPorAluno(CursoCRStrategy):
     """
     Calcula a média de todos os CRs dos alunos daquele curso em específico.
     """
-    
     def calcular_media(self, curso, ano=None, semestre=None):
-        
         total_cr = 0
         qtd = 0
-        
-        
-        for matricula in curso.matriculas:
-            
-            
+        for matricula in curso.matriculas:     
             if matricula.cr > 0:
                 total_cr += matricula.cr
                 qtd += 1

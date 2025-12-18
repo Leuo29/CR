@@ -9,7 +9,10 @@ from cr_logic.domain.strategies.curso_cr_aluno_disciplina import CursoCRAlunoDis
 
 @pytest.fixture
 def cenario_complexo():
-    
+    """
+    Cria dois alunos e disciplinas dentro e fora do curso,
+    para testar os diferentes critérios de cálculo de CR do curso.
+    """
     curso_cc = Curso("CC")
     curso_ext = Curso("EXT")
     
@@ -46,15 +49,15 @@ def test_strategy_por_disciplina(cenario_complexo):
     """Média ponderada apenas das notas de disciplinas do curso"""
     curso, todas_matriculas = cenario_complexo
     strategy = CursoCRPorDisciplina(todas_matriculas)
-    # Aluno A (no curso): 100 * 40 = 4000
-    # Aluno B (no curso): 50*40 + 80*20 = 3600
-    # Total: (4000 + 3600) / (40 + 60) = 7600 / 100 = 76.0
+    # aluno A (no curso): 100 * 40 = 4000
+    # aluno B (no curso): 50*40 + 80*20 = 3600
+    # (4000 + 3600) / (40 + 60) = 7600 / 100 = 76.0
     assert strategy.calcular_media(curso) == pytest.approx(76.0)
 
 def test_strategy_aluno_disciplina(cenario_complexo):
     """Média do CR global de alunos que passaram pelo curso"""
     curso, todas_matriculas = cenario_complexo
     strategy = CursoCRAlunoDisciplina(todas_matriculas)
-    # Ambos cursaram disciplinas de CC, então usamos os CRs Globais:
+    # Ambos cursaram disciplinas de CC, então usamos todos os crs ja calculados:
     # (100.0 + 60.0) / 2 = 80.0
     assert strategy.calcular_media(curso) == pytest.approx(80.0)

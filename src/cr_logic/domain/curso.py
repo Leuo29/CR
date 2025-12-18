@@ -14,7 +14,6 @@ class Curso:
     def media_cr(self, ano=None, semestre=None): 
         if not self.strategy:
             return 0.0
-
         return self.strategy.calcular_media(self, ano, semestre) 
 
     def __repr__(self):

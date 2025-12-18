@@ -9,16 +9,16 @@ def test_deve_calcular_cr_ponderado_corretamente():
     curso = Curso("10")
     matricula = Matricula("100", curso)
     
-    # Disciplina A: Nota 10, Carga 2h
+    # disciplina A: Nota 10, Carga 2h
     d1 = Disciplina("D1", "Disc 1", 2, 2023, 1)
-    # Disciplina B: Nota 5, Carga 4h
+    # disciplina B: Nota 5, Carga 4h
     d2 = Disciplina("D2", "Disc 2", 4, 2023, 1)
     
     matricula.adicionar_nota(Nota(d1, 10.0))
     matricula.adicionar_nota(Nota(d2, 5.0))
     
     
-    # Cálculo esperado: ((10 * 2) + (5 * 4)) / (2 + 4) = 40 / 6 = 6.666...
+    # calculo esperado: ((10 * 2) + (5 * 4)) / (2 + 4) = 40 / 6 = 6.666...
     cr = matricula.calcular_cr()
     
     

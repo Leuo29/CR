@@ -2,9 +2,10 @@ from django import forms
 
 class UploadCRForm(forms.Form):
     """
-    Formulário para arquivo CSV.
-    Campos de filtro (ano/semestre) foram removidos e
-    garantidos como vazios no cleaned_data.
+    Formulário responsável pelo upload do arquivo CSV
+    OBS.: ja retorna os filtros sempre como nao filtrados
+    para add filtros é so adicionar os campos pra informar ano e semestre
+    foram removidos pq senti q n faziam sentido nesta implementaçao 
     """
     
     csv_file = forms.FileField(
@@ -15,13 +16,11 @@ class UploadCRForm(forms.Form):
 
     def clean(self):
         cleaned_data = super().clean()
-        
-        
+
         if 'ano' not in cleaned_data:
             cleaned_data['ano'] = ''
-        
+
         if 'semestre' not in cleaned_data:
             cleaned_data['semestre'] = ''
 
-        
         return cleaned_data

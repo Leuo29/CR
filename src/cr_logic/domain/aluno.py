@@ -1,6 +1,8 @@
 from .matricula import Matricula
-
-
+    ''' 
+    classe criada apenas pra modelagem e para implementaçao futura
+    na nossa aplicaçao nao tem uso ainda
+    '''
 class Aluno:
     def __init__(self, matricula: int):
         self._matricula = matricula
